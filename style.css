@@ -1,0 +1,100 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+body{
+    height: 100vh;
+}
+.page{
+    display: none;
+    width: 100vw;
+}
+.active{
+    display: block;
+}
+
+header {
+    background-color: #19398A;
+    min-height: 12%;
+}
+.header-logo-wrapper{
+    height: 100%;
+}
+#header-logo img{
+    margin-top: 1%;
+    margin-bottom: 0.5%;
+    margin-left: 1%
+}
+#home{
+    height: 88%;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    padding: 5px;
+}
+.grid-display{
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+}
+.team-card{
+    color: white;
+    margin: 8px;
+    background: #2c2f50;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-items: center;
+    justify-content: center;
+    font-family: 'Patua One', cursive;
+    font-size: large;
+}
+.team-logo{
+    height: 8rem;
+}
+.team-name{
+    text-align: center;
+    font-weight: 100;
+    width: 70%;
+}
+#dc .team-name,
+#rr .team-name,
+#srh .team-name{
+    width: 40%;
+}
+.no-wins-span{
+    height: 1rem;
+}
+/* #rcb .team-logo{
+    margin-bottom: 12%;
+} */
+#sunrisers-hyderabad{
+}
+#royal-challengers-bangalore{
+}
+#chennai-super-kings{
+
+}
+#mumbai-indians{
+
+}
+#kolkata-knight-riders{
+
+}
+#rajasthan-royals{
+
+}
+#kings-xi-punjab{
+
+}
+#delhi-capitals{
+
+}
+#loading{
+
+}
+#error{
+
+}
