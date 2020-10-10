@@ -48,7 +48,7 @@ header {
     align-content: center;
     justify-items: center;
     justify-content: center;
-    font-family: 'Patua One', cursive;
+    font-family: 'Source Sans Pro', sans-serif;
     font-size: large;
 }
 .team-logo{
@@ -59,10 +59,14 @@ header {
     font-weight: 100;
     width: 70%;
 }
+.venue-name{
+    font-size: small;
+}
 #dc .team-name,
 #rr .team-name,
-#srh .team-name{
-    width: 40%;
+#srh .team-name,
+#mi .team-name{
+    width: 60%;
 }
 .no-wins-span{
     height: 1rem;
