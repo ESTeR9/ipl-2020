@@ -3,18 +3,22 @@
     padding: 0px;
     box-sizing: border-box;
 }
+html{
+    height: 100%;
+}
 body{
-    height: 100vh;
+    height: 100%
 }
 .page{
     display: none;
-    width: 100vw;
 }
 .active{
     display: block;
 }
 
 header {
+    /* width: 100vw;
+    position: fixed; */
     background-color: #19398A;
     min-height: 12%;
 }
@@ -27,59 +31,143 @@ header {
     margin-left: 1%
 }
 #home{
+    margin-left: 12%;
+    margin-right: 12%;
+    margin-top: 1%;
     height: 88%;
     align-items: center;
     justify-content: center;
     align-content: center;
     justify-items: center;
-    padding: 5px;
 }
 .grid-display{
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
+    grid-row-gap: 2%;
+    grid-column-gap: 1%;
+    align-items: center;
+    justify-content: center;
 }
 .team-card{
     color: white;
-    margin: 8px;
     background: #2c2f50;
     display: flex;
     flex-direction: column;
     align-items: center;
-    align-content: center;
-    justify-items: center;
-    justify-content: center;
+    justify-content: flex-end;
     font-family: 'Source Sans Pro', sans-serif;
-    font-size: large;
+    height: 92%;
+    width: 100%;
+    border-radius: 2%;
 }
 .team-logo{
-    height: 8rem;
+    height: 7rem;
 }
 .team-name{
+    font-size: 20px;
     text-align: center;
-    font-weight: 100;
-    width: 70%;
+    width: 50%;
+    margin-top: 1%;
+    margin-bottom: 4%;
 }
 .venue-name{
-    font-size: small;
+    font-size: 10px;
+    margin-bottom: 1%;
 }
 #dc .team-name,
-#rr .team-name,
-#srh .team-name,
-#mi .team-name{
-    width: 60%;
+#kxip .team-name{
+    width: 30%;
 }
-.no-wins-span{
-    height: 1rem;
+#rcb .team-name{
+    width: 90%;
 }
-/* #rcb .team-logo{
-    margin-bottom: 12%;
+.winning-years{
+    padding: 2.2%;
+    font-size: 15px;
+    color: gold;
+    margin-top: 1%;
+    margin-bottom: 5%;
+    background-color: rgb(0, 0, 0,0.3);
+    border-radius: 20px;
+}
+.no-wins{
+    color: rgb(0, 0, 0,0);
+    background-color: rgb(0, 0, 0,0);
+}
+.fa-trophy{
+    margin-right: 5px;
+}
+.view-team-btn{
+    text-decoration: none;
+    color: white;
+    font-size: medium;
+    margin-bottom: 1%;
+}
+
+.team-banner{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    position: relative;
+    width: 100%;
+    height: auto;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 5%;
+}
+
+/* @media (max-width:600px){
+    .team-banner{
+    justify-content: center;
+    }
 } */
+.team-banner .team-logo{
+    position: relative;
+    height: 14rem;
+    z-index: 5;
+}
+.banner-overlay{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    opacity: 0.35;
+}
+.team-details{
+    font-size: 18px;
+    margin-left: 5%;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    position: relative;
+    z-index: 5;
+    color: white;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 600;
+}
+.team-details .team-name{
+    width:auto;
+    font-size: xx-large;
+}
+.team-details div{
+    width: auto;
+}
+.team-details div span{
+    width: 20%;
+    opacity: 0.99;
+    margin-right: 10px;
+}
+
 #sunrisers-hyderabad{
 }
 #royal-challengers-bangalore{
 }
 #chennai-super-kings{
-
+    width: 100%;
 }
 #mumbai-indians{
 

@@ -21,7 +21,17 @@ const appData ={
     'rajasthan-royals':'rr',
     'kings-xi-punjab':'kxip',
     'delhi-capitals':'dc'
-}
+    },
+    teamColors:{
+        'chennai-super-kings': ['#fdb913','#f85c00','#ffc721','#ff6717'],
+        'delhi-capitals': ['#004c93','#0358a7','#175aa7','#1b63b2'],
+        'kings-xi-punjab': ['#aa4545','#740f0b','#b75756','#861a19'],
+        'kolkata-knight-riders': ['#70458f','#3d2057','#7d579a','#472962'],
+        'mumbai-indians': ['#005da0','#003a63','#0f6baa','#0f496f'],
+        'rajasthan-royals': ['#2d4d9d','#172e5e','#3959a9','#293b6b'],
+        'royal-challengers-bangalore': ['#000','#464646','#222','#555'],
+        'sunrisers-hyderabad': ['#fb643e','#b81c25','#ff6f49','#c42930']
+    }
 }
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -71,8 +81,71 @@ function StartApp(){
     });
 
 }
+function loadPages(){
+    appData.teams.forEach(team=>{
+        let page=document.getElementById(team.id);
+
+        let CaptianName='';
+        appData[appData.teamsIDs[team.id]]['players'].forEach(player=>{
+            if(player['id']===appData[appData.teamsIDs[team.id]]['team']['captainId']){
+                CaptianName=player['name'];
+                return;
+            }
+        })
+        
+        let teamBanner=document.createElement('div');
+        teamBanner.classList.add('team-banner');
+        teamBanner.setAttribute('style',`background-image: url(assets/${appData.teamsIDs[team['id']]}-banner.jpg)`);
+
+        let bannerOverlay=document.createElement('div');
+        bannerOverlay.setAttribute('style',`background-color: ${appData.teamColors[team.id][0]}`)
+        bannerOverlay.classList.add('banner-overlay');
+        teamBanner.appendChild(bannerOverlay);
+        
+        let teamLogo=document.createElement("IMG");
+        teamLogo.classList.add('team-logo');
+        teamLogo.setAttribute("src",`assets/${appData.teamsIDs[team.id]}.png`);
+        teamBanner.appendChild(teamLogo);
+
+        let teamDetails=document.createElement('div');
+        teamDetails.classList.add('team-details');
+        let teamName=document.createElement('div');
+        teamName.classList.add('team-name');
+        teamName.appendChild(document.createTextNode(team.teamName));
+        teamDetails.appendChild(teamName); 
+        let winningYears=document.createElement('div');
+        let trophyIcon=document.createElement('i');
+        trophyIcon.classList.add("fa","fa-trophy");
+        winningYears.classList.add('winning-years');   
+        winningYears.appendChild(trophyIcon);   
+        if(team['winningYears'].length>0){
+            winningYears.appendChild(document.createTextNode(team['winningYears'].toString()));
+        }
+        else{
+            winningYears.classList.add('no-wins');
+        }
+        teamDetails.appendChild(winningYears);
+        let teamCaptian=document.createElement('div');
+        teamCaptian.innerHTML=`<span>Captian</span>${CaptianName}`;
+        teamDetails.appendChild(teamCaptian);
+        let teamVenue=document.createElement('div');
+        teamVenue.innerHTML=`<span>Venue</span>${team['venue']}`;
+        teamDetails.appendChild(teamVenue);
+
+        
+        teamBanner.appendChild(teamDetails);
+
+        
+        page.appendChild(teamBanner);
+
+    })
+    return new Promise((resolve, reject) => {
+        resolve(0);
+    });
+}
 async function intiate(){
     await getData();
+    await loadPages();
     await sleep(1000);
     await StartApp();
 }
@@ -166,7 +239,13 @@ function loadHomePage(){
         let teamCard=document.createElement('div');
         teamCard.classList.add('team-card');
         teamCard.id= appData.teamsIDs[team['id']];
-
+        teamCard.setAttribute('style',`background: linear-gradient(135deg,${appData.teamColors[team.id][0]},${appData.teamColors[team.id][1]})`);
+        teamCard.onmouseover=function(){
+            teamCard.setAttribute('style',`background: linear-gradient(135deg,${appData.teamColors[team.id][2]},${appData.teamColors[team.id][3]})`);
+        }
+        teamCard.onmouseout=function(){
+            teamCard.setAttribute('style',`background: linear-gradient(135deg,${appData.teamColors[team.id][0]},${appData.teamColors[team.id][1]})`);
+        }
         let teamLogo=document.createElement("IMG");
         teamLogo.classList.add('team-logo');
         teamLogo.setAttribute("src",`assets/${appData.teamsIDs[team['id']]}.png`);
@@ -181,18 +260,16 @@ function loadHomePage(){
         venueNameHolder.classList.add("venue-name");
         venueNameHolder.appendChild(document.createTextNode(team['venue']));
         teamCard.appendChild(venueNameHolder); 
-        let winningYears;       
+        let winningYears=document.createElement('div');
+        let trophyIcon=document.createElement('i');
+        trophyIcon.classList.add("fa","fa-trophy");
+        winningYears.classList.add('winning-years');   
+        winningYears.appendChild(trophyIcon);   
         if(team['winningYears'].length>0){
-            winningYears=document.createElement('div');
-            winningYears.classList.add('winning-years');
-            let trophyIcon=document.createElement('i');
-            trophyIcon.classList.add("fa","fa-trophy");
-            winningYears.appendChild(trophyIcon);
             winningYears.appendChild(document.createTextNode(team['winningYears'].toString()));
         }
         else{
-            winningYears=document.createElement('span');
-            winningYears.classList.add('no-wins-span');
+            winningYears.classList.add('no-wins');
         }
         teamCard.appendChild(winningYears);
         
