@@ -145,8 +145,9 @@ function loadPages(){
 }
 async function intiate(){
     await getData();
+    sleep(1000);
     await loadPages();
-    await sleep(1000);
+    sleep(1000);
     await StartApp();
 }
 function nav(ev){
